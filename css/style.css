@@ -11,6 +11,11 @@
             --border-radius: 12px;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             --transition: all 0.3s ease;
+            
+            /* Status colors */
+            --ongoing: #4caf50;
+            --hiatus: #ff9800;
+            --finished: #f44336;
         }
         
         * {
@@ -240,7 +245,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
-        .form-group input {
+        .form-group input, .form-group select {
             padding: 12px 15px;
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -250,7 +255,7 @@
             transition: var(--transition);
         }
         
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus {
             outline: none;
             border-color: var(--primary);
             background: rgba(106, 85, 250, 0.1);
@@ -290,6 +295,7 @@
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
         
         .manga-card:hover {
@@ -319,12 +325,47 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--secondary);
+            background: var(--ongoing);
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        /* Status badges */
+        .chapter-badge.hiatus {
+            background: var(--hiatus);
+        }
+        
+        .chapter-badge.finished {
+            background: var(--finished);
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .status-badge.ongoing {
+            background: var(--ongoing);
+        }
+        
+        .status-badge.hiatus {
+            background: var(--hiatus);
+        }
+        
+        .status-badge.finished {
+            background: var(--finished);
         }
         
         .manga-info {
@@ -391,9 +432,11 @@
             color: white;
         }
         
-        /* Modal */
+        /* Modals */
         .modal {
             display: none;
+            align-items: center;
+            justify-content: center;
             position: fixed;
             top: 0;
             left: 0;
@@ -410,7 +453,7 @@
             background: var(--dark);
             border-radius: var(--border-radius);
             width: 90%;
-            max-width: 800px;
+            max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 30px;
@@ -485,6 +528,17 @@
             display: flex;
             justify-content: flex-end;
             gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .edit-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .edit-form .form-group {
+            margin-bottom: 10px;
         }
         
         /* Footer */
@@ -597,5 +651,9 @@
             .footer-bottom {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            
+            .modal-content {
+                padding: 20px;
             }
         }

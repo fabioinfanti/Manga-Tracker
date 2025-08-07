@@ -71,6 +71,14 @@
                             <input type="number" id="manga-chapter" placeholder="Ex: 120" min="0">
                         </div>
                         <div class="form-group">
+                            <label for="manga-status">Status</label>
+                            <select id="manga-status">
+                                <option value="ongoing">Em Andamento</option>
+                                <option value="hiatus">Em Hiato</option>
+                                <option value="finished">Concluído</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="manga-link">Link de Leitura (Opcional)</label>
                             <input type="url" id="manga-link" placeholder="https://...">
                         </div>
@@ -94,6 +102,7 @@
                             <option value="recent">Mais Recentes</option>
                             <option value="title">Ordem Alfabética</option>
                             <option value="chapter">Última Leitura</option>
+                            <option value="status">Status</option>
                         </select>
                     </div>
                 </div>
@@ -109,6 +118,51 @@
         </div>
     </main>
 
+
+    <!-- Modal para edição de mangá -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3><i class="fas fa-edit"></i> Editar Mangá</h3>
+            <div class="edit-form">
+                <div class="form-group">
+                    <label for="edit-title">Título do Mangá</label>
+                    <input type="text" id="edit-title" placeholder="Título">
+                </div>
+                <div class="form-group">
+                    <label for="edit-chapter">Capítulo Atual</label>
+                    <input type="number" id="edit-chapter" placeholder="Capítulo" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="edit-status">Status</label>
+                    <select id="edit-status">
+                        <option value="ongoing">Em Andamento</option>
+                        <option value="hiatus">Em Hiato</option>
+                        <option value="finished">Concluído</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-link">Link de Leitura</label>
+                    <input type="url" id="edit-link" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="edit-cover-url">URL da Capa</label>
+                    <input type="text" id="edit-cover-url" placeholder="URL da capa">
+                    <button type="button" class="secondary-btn" onclick="searchCoversForEdit()" style="margin-top: 10px;">
+                        <i class="fas fa-search"></i> Buscar Capas
+                    </button>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="cancel-edit" class="secondary-btn">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button id="save-edit" class="primary-btn">
+                    <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </div>
     <!-- Modal para seleção de capa -->
     <div id="cover-modal" class="modal">
         <div class="modal-content">
